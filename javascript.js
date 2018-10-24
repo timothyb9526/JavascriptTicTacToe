@@ -1,35 +1,3 @@
-// var piece = "O";
-
-// function reset() {
-//     var input = document.querySelectorAll("input");
-//     for (var i in input) {
-//         input[i].value = "";
-//     }
-// }
-// var button = document.querySelector("button");
-// button.addEventListener("click", reset);
-
-// function pieceOnBoard(x, piece) {
-//     var b1 = document.getElementById("1");
-//     var b2 = document.getElementById("2");
-//     var b3 = document.getElementById("3");
-//     var b4 = document.getElementById("4");
-//     var b5 = document.getElementById("5");
-//     var b6 = document.getElementById("6");
-//     var b7 = document.getElementById("7");
-//     var b8 = document.getElementById("8");
-//     var b9 = document.getElementById("9");
-// }
-
-// function play(button) {
-//     if (piece == "Q") {
-//         piece = "O";
-//         pieceOnBoard(button, piece);
-//     } else if (piece == "O") {
-//         piece = "Q";
-//         pieceOnBoard(button, piece);
-//     }
-// }
 LETTER = "X";
 
 function addLetter(event) {
@@ -56,7 +24,8 @@ function addLetter(event) {
         (sq3 === "X" && sq6 === "X" && sq9 === "X") ||
         (sq3 === "X" && sq5 === "X" && sq7 === "X")
     ) {
-        alert("Player 1 WINS!!!!");
+        $("#myModal").show();
+        $("#winner").html("Player 1 WINS!!!!!");
         reset();
     } else if (
         (sq1 === "O" && sq2 === "O" && sq3 === "O") ||
@@ -68,10 +37,17 @@ function addLetter(event) {
         (sq3 === "O" && sq6 === "O" && sq9 === "O") ||
         (sq3 === "O" && sq5 === "O" && sq7 === "O")
     ) {
-        alert("Player 2 WINS!!!!");
+        $("#myModal").show();
+        $("#winner").html("Player 2 WINS!!!!!");
         reset();
     }
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
 }
+
 function reset() {
     $("td").each(function() {
         $(this).html(
